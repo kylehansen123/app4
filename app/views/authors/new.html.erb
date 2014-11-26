@@ -1,0 +1,117 @@
+<!-- Validation failure messages -->
+
+<% if @author.errors.any? %>
+  <% @author.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Simple full-width example-->
+
+<div class="page-header">
+  <h1>Add Author</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_author" class="form-horizontal">
+      <!-- Label and input for author_name -->
+      <div class="form-group">
+        <label for="author_name" class="col-sm-2 control-label">
+          Author name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="author_name" name="author_name" placeholder="Author name" class="form-control" value="<%= @author.author_name %>">
+        </div>
+      </div>
+
+      <!-- Label and input for author_nationality -->
+      <div class="form-group">
+        <label for="author_nationality" class="col-sm-2 control-label">
+          Author nationality
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="author_nationality" name="author_nationality" placeholder="Author nationality" class="form-control" value="<%= @author.author_nationality %>">
+        </div>
+      </div>
+
+      <!-- Label and input for author_birth_year -->
+      <div class="form-group">
+        <label for="author_birth_year" class="col-sm-2 control-label">
+          Author birth year
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="author_birth_year" name="author_birth_year" placeholder="Author birth year" class="form-control" value="<%= @author.author_birth_year %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Create Author" class="btn btn-success">
+          or
+          <a href="/authors">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Author</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_author" class="form-horizontal">
+          <!-- Label and input for author_name -->
+          <div class="form-group">
+            <label for="author_name" class="col-sm-2 control-label">
+              Author name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="author_name" name="author_name" placeholder="Author name" class="form-control" value="<%= @author.author_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for author_nationality -->
+          <div class="form-group">
+            <label for="author_nationality" class="col-sm-2 control-label">
+              Author nationality
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="author_nationality" name="author_nationality" placeholder="Author nationality" class="form-control" value="<%= @author.author_nationality %>">
+            </div>
+          </div>
+
+          <!-- Label and input for author_birth_year -->
+          <div class="form-group">
+            <label for="author_birth_year" class="col-sm-2 control-label">
+              Author birth year
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="author_birth_year" name="author_birth_year" placeholder="Author birth year" class="form-control" value="<%= @author.author_birth_year %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Create Author" class="btn btn-success">
+              or
+              <a href="/authors">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

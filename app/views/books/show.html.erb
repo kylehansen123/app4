@@ -1,0 +1,84 @@
+<!-- Simple full-width example-->
+
+<div class="page-header">
+  <h1>Book #<%= @book.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Book title</dt>
+      <dd><%= @book.book_title %></dd>
+
+      <dt>Author</dt>
+      <dd><%= @book.author_id %></dd>
+
+      <dt>Published year</dt>
+      <dd><%= @book.published_year %></dd>
+
+      <dt></dt>
+      <dd>
+        <div class="btn-group">
+          <a href="/books" class="btn btn-primary">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+
+          <a href="/books/<%= @book.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+
+          <a href="/delete_book/<%= @book.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </div>
+      </dd>
+    </dl>
+
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Book #<%= @book.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Book title</dt>
+              <dd><%= @book.book_title %></dd>
+
+              <dt>Author</dt>
+              <dd><%= @book.author_id %></dd>
+
+              <dt>Published year</dt>
+              <dd><%= @book.published_year %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/books" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/books/<%= @book.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_book/<%= @book.id %>" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

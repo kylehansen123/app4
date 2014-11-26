@@ -1,0 +1,117 @@
+<!-- Validation failure messages -->
+
+<% if @book.errors.any? %>
+  <% @book.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Simple full-width example-->
+
+<div class="page-header">
+  <h1>Add Book</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_book" class="form-horizontal">
+      <!-- Label and input for book_title -->
+      <div class="form-group">
+        <label for="book_title" class="col-sm-2 control-label">
+          Book title
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="book_title" name="book_title" placeholder="Book title" class="form-control" value="<%= @book.book_title %>">
+        </div>
+      </div>
+
+      <!-- Label and input for author_id -->
+      <div class="form-group">
+        <label for="author_id" class="col-sm-2 control-label">
+          Author
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="author_id" name="author_id" placeholder="Author" class="form-control" value="<%= @book.author_id %>">
+        </div>
+      </div>
+
+      <!-- Label and input for published_year -->
+      <div class="form-group">
+        <label for="published_year" class="col-sm-2 control-label">
+          Published year
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="published_year" name="published_year" placeholder="Published year" class="form-control" value="<%= @book.published_year %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Create Book" class="btn btn-success">
+          or
+          <a href="/books">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Book</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_book" class="form-horizontal">
+          <!-- Label and input for book_title -->
+          <div class="form-group">
+            <label for="book_title" class="col-sm-2 control-label">
+              Book title
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="book_title" name="book_title" placeholder="Book title" class="form-control" value="<%= @book.book_title %>">
+            </div>
+          </div>
+
+          <!-- Label and input for author_id -->
+          <div class="form-group">
+            <label for="author_id" class="col-sm-2 control-label">
+              Author
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="author_id" name="author_id" placeholder="Author" class="form-control" value="<%= @book.author_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for published_year -->
+          <div class="form-group">
+            <label for="published_year" class="col-sm-2 control-label">
+              Published year
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="published_year" name="published_year" placeholder="Published year" class="form-control" value="<%= @book.published_year %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Create Book" class="btn btn-success">
+              or
+              <a href="/books">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
