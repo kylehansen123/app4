@@ -25,10 +25,13 @@
       <div class="panel-body">
         <dl>
           <dt>User</dt>
-          <dd><%= favorite.user_id %></dd>
+          <dd><%= favorite.user.user_name %></dd>
 
           <dt>Book</dt>
-          <dd><%= favorite.book_id %></dd>
+          <dd><%= favorite.book.book_title %></dd>
+
+          <dt>Author</dt>
+          <dd><%= favorite.book.author.author_name %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
