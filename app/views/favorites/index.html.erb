@@ -5,50 +5,6 @@
   </h1>
 </div>
 
-<!-- Simple table layout example -->
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Book</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @favorites.each do |favorite| %>
-          <tr>
-            <td><%= favorite.user_id %></td>
-            <td><%= favorite.book_id %></td>
-            <td>
-              <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- End simple table layout example -->
-
 <!-- Responsive, Isotope-based layout example -->
 
 <div class="row">
