@@ -47,7 +47,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if 1 > 2 %>
+        <% if current_user.present? %>
           <li><a href="/users/edit">Oscar the Grouch</a></li>
           <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
         <% else %>
