@@ -19,25 +19,34 @@
 <% @books.each do |book| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
 
-<ul class="nav nav-pills pull-right">
+<!-- <ul class="nav nav-pills pull-right">
   <li role="presentation"><a href="#">Add to Favorites</a></li>
 </ul>
-
+ -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Book #<%= book.id %></h3>
+      <a href ="/books/<%= book.id %>">
+        <h3 class="panel-title"><%= book.book_title %> </h3>
+      </a>
+
       </div>
       <div class="panel-body">
 
         <dl>
           <dt>Book title</dt>
+          <a href ="/books/<%= book.id %>">
           <dd><%= book.book_title %></dd>
+          </a>
 
           <dt>Author</dt>
+          <a href ="/authors/<%= book.author.id %>">
           <dd><%= book.author.author_name %></dd>
+          </a>
 
           <dt>Published year</dt>
           <dd><%= book.published_year %></dd>
+
+          <!-- <dd><img src = "<%= @client.book_by_title(book.book_title).image_url %>"></dd> -->
 
            <form action="/create_favorite" class="form-horizontal">
           <!-- Label and input for user_id -->
@@ -62,19 +71,6 @@
         </form>
 
         </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/books/<%= book.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/books/<%= book.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_book/<%= book.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
       </div>
     </div>
   </div>

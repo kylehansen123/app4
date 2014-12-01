@@ -1,6 +1,19 @@
+require 'open-uri'
+require 'json'
+
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 class BooksController < ApplicationController
   def index
     @books = Book.all
+
+    # Github sosedoff
+    key = "ud9nX57jOGdQCwP2PyP5Ig"
+    secret = "GQh5qIFlro973mZLQM6bJEnMvogN4WpxwAr24afcQ"
+    @client = Goodreads::Client.new(:api_key => key, :api_secret => secret)
+    @result = @client.book_by_title("East of Eden")
+
   end
 
   def show

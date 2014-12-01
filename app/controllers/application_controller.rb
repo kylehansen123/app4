@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
+
+require 'open-uri'
+require 'json'
+
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 end
