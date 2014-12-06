@@ -1,41 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'books#index'
+  root 'favorites#index'
 
-  # Routes for the Author resource:
-  # CREATE
-  get('/authors/new', { :controller => 'authors', :action => 'new' })
-  get('/create_author', { :controller => 'authors', :action => 'create' })
-
-  # READ
-  get('/authors', { :controller => 'authors', :action => 'index' })
-  get('/authors/:id', { :controller => 'authors', :action => 'show' })
-
-  # UPDATE
-  get('/authors/:id/edit', { :controller => 'authors', :action => 'edit' })
-  get('/update_author/:id', { :controller => 'authors', :action => 'update' })
-
-  # DELETE
-  get('/delete_author/:id', { :controller => 'authors', :action => 'destroy' })
-  #------------------------------
-
-  # Routes for the Book resource:
-  # CREATE
-  get('/books/new', { :controller => 'books', :action => 'new' })
-  get('/create_book', { :controller => 'books', :action => 'create' })
-
-  # READ
-  get('/books', { :controller => 'books', :action => 'index' })
-  get('/books/:id', { :controller => 'books', :action => 'show' })
-
-  # UPDATE
-  get('/books/:id/edit', { :controller => 'books', :action => 'edit' })
-  get('/update_book/:id', { :controller => 'books', :action => 'update' })
-
-  # DELETE
-  get('/delete_book/:id', { :controller => 'books', :action => 'destroy' })
-  #------------------------------
+  get("/search", { :controller => "app", :action => "search" })
 
   # Routes for the Favorite resource:
   # CREATE

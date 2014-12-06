@@ -1,57 +1,60 @@
 <div class="page-header">
   <h1>
-    Favorites
+    My Favorites
     <a href="/favorites/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
 
-<!-- Responsive, Isotope-based layout example -->
+<!-- Simple table layout example -->
 
 <div class="row">
-  <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Favorites (start typing)" class="form-control">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Book Cover</th>
+          <th>Book Title</th>
+          <th>Book Author</th>
+          <th>Year Published</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+            <% current_user.favorites.each do |favorite| %>
+          <tr>
+
+              <% url_of_book_id_search = "https://www.goodreads.com/book/show/" + favorite.book_id.to_s + "?format=xml&key=" + @key %>
+              <% raw_book_id_data = open(url_of_book_id_search).read %>
+              <% parsed_book_id_data = Nokogiri::XML(raw_book_id_data) %>
+              <% book_id_results = parsed_book_id_data.css("GoodreadsResponse") %>
+              <% book_by_id = @client.book(favorite.book_id) %>
+
+            <td><img src = "<%= book_by_id.image_url %>"></td>
+            <td><%= book_by_id.work.original_title %></td>
+            <td><%= book_by_id.authors.author[0].name %></td>
+            <td><%= book_by_id.work.original_publication_year %></td>
+            <td><%= book_by_id.description %></td>
+            <td>
+              <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
+                <i class="fa fa-search-plus"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
-<hr>
+<!-- End simple table layout example -->
 
-<div class="row isotope-container">
-<% current_user.favorites.each do |favorite| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= favorite.book.book_title %></h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>User</dt>
-          <dd><%= favorite.user.user_name %></dd>
-
-          <dt>Book</dt>
-          <dd><%= favorite.book.book_title %></dd>
-
-          <dt>Author</dt>
-          <dd><%= favorite.book.author.author_name %></dd>
-
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-</div>
 
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
