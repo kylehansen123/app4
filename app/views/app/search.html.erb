@@ -6,9 +6,10 @@
       <thead>
         <tr>
           <th>Book Cover</th>
-          <th>Book title</th>
-          <th>Author name</th>
+          <th>Book Title</th>
+          <th>Book Author</th>
           <th>Year Published</th>
+          <th>User Rating (out of 5)</th>
           <th>Description</th>
           <th></th>
           <th></th>
@@ -22,6 +23,7 @@
             <td><%= work.best_book.title %></td>
             <td><%= work.best_book.author.name %></td>
             <td><%= work.original_publication_year %></td>
+            <td><%= work.average_rating %></td>
 
 
             <% book_by_id = @client.book(work.best_book.id) %>
@@ -48,6 +50,12 @@
                   </div>
                 </div>
               </form>
+
+              <% safe_address = URI.encode(work.best_book.title) %>
+              <% raw_url = "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=" + safe_address %>
+
+              <a class="btn btn-success" href="<%= raw_url %>" role="button">See Book on Amazon</a>
+
               </td>
           </tr>
         <% end %>

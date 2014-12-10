@@ -5,17 +5,36 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Favorite #<%= @favorite.id %></h3>
+
+        <h3 class="panel-title"><img src="<%= @book_by_id.image_url %>"><%= @book_by_id.work.original_title %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
               <dt>User</dt>
-              <dd><%= @favorite.user_id %></dd>
+              <dd><%= @favorite.user.user_name %></dd>
 
-              <dt>Book</dt>
-              <dd><%= @favorite.book_id %></dd>
+              <dt>Book Title</dt>
+              <dd><%= @book_by_id.work.original_title %></dd>
+
+              <dt>Author</dt>
+              <dd><%= @book_id_results.children.children.children.children.children[1] %></dd>
+
+              <dt>Year Published</dt>
+              <dd><%= @book_by_id.work.original_publication_year %></dd>
+
+              <dt>Description</dt>
+              <dd><%= @book_by_id.description.html_safe %></dd>
+
+              <dt>Other Users who Love this Book</dt>
+              <% if @other_users.count > 0 %>
+              <% @other_users.each do |other_user| %>
+              <dd><%= other_user.user_name %></dd>
+              <% end %>
+              <% else %>
+              <dd> None :( </dd>
+              <% end %>
 
             </dl>
             <div class="btn-group btn-group-justified">

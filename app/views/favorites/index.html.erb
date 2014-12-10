@@ -24,18 +24,20 @@
       <tbody>
             <% current_user.favorites.each do |favorite| %>
           <tr>
+            <!-- Github sosedoff -->
+            <% @book_by_id = @client.book(favorite.book_id) %>
 
-              <% url_of_book_id_search = "https://www.goodreads.com/book/show/" + favorite.book_id.to_s + "?format=xml&key=" + @key %>
-              <% raw_book_id_data = open(url_of_book_id_search).read %>
-              <% parsed_book_id_data = Nokogiri::XML(raw_book_id_data) %>
-              <% book_id_results = parsed_book_id_data.css("GoodreadsResponse") %>
-              <% book_by_id = @client.book(favorite.book_id) %>
+            <!-- Nokogiri -->
+            <% url_of_book_id_search = "https://www.goodreads.com/book/show/" + favorite.book_id.to_s + "?format=xml&key=" + @key %>
+            <% raw_book_id_data = open(url_of_book_id_search).read %>
+            <% parsed_book_id_data = Nokogiri::XML(raw_book_id_data) %>
+            <% @book_id_results = parsed_book_id_data.css("GoodreadsResponse") %>
 
-            <td><img src = "<%= book_by_id.image_url %>"></td>
-            <td><%= book_by_id.work.original_title %></td>
-            <td><%= book_by_id.authors.author[0].name %></td>
-            <td><%= book_by_id.work.original_publication_year %></td>
-            <td><%= book_by_id.description %></td>
+            <td><img src = "<%= @book_by_id.image_url %>"></td>
+            <td><%= @book_by_id.work.original_title %></td>
+            <td><%= @book_id_results.children.children.children.children.children[1] %></td>
+            <td><%= @book_by_id.work.original_publication_year %></td>
+            <td><%= @book_by_id.description.html_safe %></td>
             <td>
               <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
                 <i class="fa fa-search-plus"></i>
